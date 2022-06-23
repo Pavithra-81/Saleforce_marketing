@@ -1,0 +1,102 @@
+package om;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import java.lang.*;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Newcompaign {
+	public static void main(String args[]) throws InterruptedException {
+		System.out.println("HI");
+	}
+}
+
+
+package om;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
+
+import net.bytebuddy.implementation.bind.annotation.Super;
+
+public class Addcompaign extends Newcompaign{
+	static WebDriver driver;
+	static ChromeOptions opt = new ChromeOptions();
+	Super newcomapign;
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\PA40064289\\driver\\chromedriver.exe");
+		opt.addArguments("--disable-notifications");
+		driver=new ChromeDriver(opt);		
+	}
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+	@Before
+	public void setUp() throws Exception {
+		driver.get("https://login.salesforce.com/");
+		driver.findElement(By.id("username")).sendKeys("pavithra812000@gmail.com");
+		driver.findElement(By.id("password")).sendKeys("Pavitra8");	
+		Thread.sleep(10000);		
+		driver.findElement(By.id("Login")).click();		
+	}
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(30000);
+		driver.findElement(By.xpath("/html/body/div[4]/div[1]/section/header/div[2]/span/div[2]/ul/li[9]/span/button")).click();
+		Thread.sleep(10000);
+		driver.findElement(By.xpath("/html/body/div[4]/div[2]/div[2]/div[1]/div[1]/div/div[2]/div/a[2]")).click();	
+	}
+	@Test
+	public void test1() throws InterruptedException {
+		Thread.sleep(30000);	
+		driver.findElement(By.xpath("/html/body/div[4]/div[1]/section/div[1]/div/div[1]/div[1]/div/div/div[1]/button/div")).click();
+		Thread.sleep(30000);	
+		WebElement m=driver.findElement(By.xpath("/html/body/div[4]/div[2]/div[2]/div[1]/div[1]/one-app-launcher-menu/div/one-app-launcher-search-bar/lightning-input/div/input"));
+		m.sendKeys("Marketing");
+		Thread.sleep(30000);	
+		m.sendKeys(Keys.ENTER);
+	}
+	@Test
+	public void AddCampaign() throws InterruptedException {
+		Thread.sleep(10000);	
+		driver.findElement(By.xpath("/html/body/div[4]/div[1]/section/div[1]/div/div[1]/div[1]/div/div/div[1]/button/div")).click();
+		Thread.sleep(20000);	
+		WebElement m=driver.findElement(By.xpath("/html/body/div[4]/div[2]/div[2]/div[1]/div[1]/one-app-launcher-menu/div/one-app-launcher-search-bar/lightning-input/div/input"));
+		m.sendKeys("Marketing");
+		Thread.sleep(10000);	
+		m.sendKeys(Keys.ENTER);
+		Thread.sleep(30000);
+		//Alert alert = driver.switchTo().alert();
+		//alert.dismiss();
+		driver.findElement(By.xpath("/html/body/div[4]/div[1]/section/div[1]/div[1]/one-appnav/div/one-app-nav-bar/nav/div/one-app-nav-bar-item-root[3]/one-app-nav-bar-item-dropdown/div/one-app-nav-bar-menu-button")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.cssSelector(".slds-is-open .slds-dropdown__item:nth-child(1) > a")).click();
+		Thread.sleep(10000);
+		driver.findElement(By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div[1]/div/article/div[3]/div/div[1]/div/div/div[2]/div[1]/div/div/div/input")).sendKeys("Product");
+		driver.findElement(By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div[1]/div/article/div[3]/div/div[1]/div/div/div[3]/div[1]/div/div/div/input")).click();
+		driver.findElement(By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div/div/div[2]/button[3]")).click();
+		Thread.sleep(10000);
+		}		
+}
